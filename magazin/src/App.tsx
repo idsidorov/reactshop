@@ -1,8 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
+import SignIn from './auth/SignIn/components/SignIn'
 
 const App: React.FC = () => {
   return (
-    <p>PRIVET</p>
+    <SignIn />
   );
 }
 
