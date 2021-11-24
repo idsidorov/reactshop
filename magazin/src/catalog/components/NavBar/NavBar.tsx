@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
+import {NavLink } from 'react-router-dom';
+import styles from './styles.module.scss'
+
 
 const NavBar: React.FC = () => {
 
-    const [isLogin, setIsLogin] = useState<boolean> (false)
-
-
-
-    return (
+    
+    return(
         <nav>
             <div className='nav-wrapper'>
-                <a href="#!" className="brand-logo"><i className="material-icons">cloud</i>InterShop</a>
+                <NavLink to="/" className="brand-logo"><i className="material-icons">cloud</i>InterShop</NavLink>
                 <ul className="right hide-on-med-and-down">
                     <li>
                         <form>
@@ -21,17 +21,13 @@ const NavBar: React.FC = () => {
                             </div>
                         </form>
                     </li>
-                        {isLogin ? <button className="btn waves-effect waves-light" type="submit" name="action">Купить</button> : <li><a href="/"><i className="material-icons">account_circle</i></a></li>}
-                        <a href="/"><i className="material-icons">account_circle</i></a>
-                    <li><a href="/"><i className="material-icons">shopping_cart</i></a></li>
-                    <li><a href="/"><i className="material-icons">history</i></a></li>
+                    <li><NavLink to="/registration"><i className="material-icons">account_circle</i></NavLink></li>
+                    <li><NavLink to="/cart"><i className="material-icons">shopping_cart</i></NavLink></li>
+                    <li><NavLink to="/history"><i className="material-icons">history</i></NavLink></li>
                 </ul>
             </div>
         </nav>
     )
 }
-
-    
-
 
 export default NavBar;
