@@ -1,0 +1,27 @@
+.container {
+    
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-content: flex-start;
+}
+
+.card {
+    display: flex;
+    padding-top: 30px;
+    
+    justify-content: space-around;
+    align-content: flex-start;
+}
+
+.oneCard {
+    display: flex;
+    padding-top: 30px;
+    width: auto;
+    
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+}
+
