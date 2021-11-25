@@ -21,7 +21,7 @@ const NavBar: React.FC = () => {
                             </div>
                         </form>
                     </li>
-                    <li><NavLink to="/registration"><i className="material-icons">account_circle</i></NavLink></li>
+                    <li><NavLink to="/logined"><i className="material-icons">account_circle</i></NavLink></li>
                     <li><NavLink to="/cart"><i className="material-icons">shopping_cart</i></NavLink></li>
                     <li><NavLink to="/history"><i className="material-icons">history</i></NavLink></li>
                 </ul>
