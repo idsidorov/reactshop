@@ -7,8 +7,8 @@ const Card: React.FC = () => {
 
 
     return (
-        <>
-            <div className={styles.сard}>
+    
+            <div className={styles.Card}>
                 {Page.map((item: any) => (
                     <div className={styles.oneCard} key={item.id}>
                         
@@ -39,7 +39,7 @@ const Card: React.FC = () => {
                 )
                 )}
             </div>
-        </>
+ 
 
 
 

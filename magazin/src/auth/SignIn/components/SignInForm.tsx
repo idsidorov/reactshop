@@ -56,7 +56,7 @@ const SignInForm: React.FC = () => {
                         </div>
                     </div>
                     <div className={styles.btnGroup}>
-                        <div className={styles.btn}>
+                        <div className={styles.btnAuth}>
                             <button 
                             className="btn waves-effect waves-light" 
                             type="submit" 
