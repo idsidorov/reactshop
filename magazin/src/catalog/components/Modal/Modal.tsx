@@ -1,9 +1,12 @@
 import React, {useCallback, useEffect} from "react";
 import Page from '../../constance/PageConstance'
+import Card from "../PageCatalog/Card";
 import styles from "./styles.module.scss";
 
 
 interface ModalProps {
+    
+    key: number;
     img: any;
     title: string;
     price: string;
@@ -12,37 +15,37 @@ interface ModalProps {
     onClose: () => void;
 }
 
-export const Modal: React.FC<ModalProps> = ({ title, isOpen, onClose, price, img, description}) => {
+export const Modal: React.FC<ModalProps> = ( props: ModalProps) => {
+    console.log(props)
 
     const overlayRef = React.useRef(null);
 
     const handleOverlayClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
         if (e.target === overlayRef.current) {
-            onClose()
+            props.onClose()
         }
     }
 
-    return isOpen ? ( 
-        <div className={styles.modal}>
+    return props.isOpen ? ( <> 
+        <div className={styles.modal} key={props.key}>
             <div 
             className={styles.modal_overlay}
             ref={overlayRef} 
             onClick={handleOverlayClick} />
             <div className={styles.modal_box}>
                 <div className={styles.modal_close_btn}>
-                    <button onClick={onClose}>X</button>
+                    <button onClick={props.onClose}>X</button>
                 </div>
-                <div className={styles.modal_img}>
-                    {img}
-                </div>
+                <img className={styles.modal_img} src={`${props.img}`}>
+                </img>
                 <div className={styles.modal_title}>
-                    {title}
+                    {props.title}
                 </div>
                 <div className={styles.modal_content}>
-                    {price}
+                    {props.price}
                 </div>
                 <div className={styles.modal_description}>
-                    {description}
+                    {props.description}
                 </div>
                 <div className={styles.button}>
                     <div className={styles.btn_add}>
@@ -56,6 +59,7 @@ export const Modal: React.FC<ModalProps> = ({ title, isOpen, onClose, price, img
                 </div>
             </div>
         </div>
+    </>
     ) : null;
 };
 

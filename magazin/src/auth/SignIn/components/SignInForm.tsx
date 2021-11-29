@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import styles from './styles.module.scss'
 import {NavLink } from 'react-router-dom';
 
@@ -6,14 +7,28 @@ const SignInForm: React.FC = () => {
 
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
-    
-    // const onSubmit = (value: any) => {
-    //     console.log(value) 
-    // }
 
-     const handleClick = (): any => {
-        console.log('otpravilos')
-      }
+    const regUserEmail = localStorage.getItem('email')
+    const regUserPassvord = localStorage.getItem('password')
+    
+    const history = useHistory();
+
+      const inputHandler = (e: any) => {
+        switch (e.target.name) {
+            case 'email':
+                setEmail(e.target.value)							
+                break
+            case 'password':
+                setPassword(e.target.value)							
+                break
+        }}
+
+        const handleClick = (): any => {
+            if(email === regUserEmail && password === regUserPassvord) {
+                history.push('/')
+            }
+            console.log('ne voshol')
+          }
 
     return (
         <div className={styles.container}>
@@ -24,14 +39,13 @@ const SignInForm: React.FC = () => {
                             <div className="row">
                                 <div className="input-field col s12">
                                     <input 
+                                    name='email'
                                     value={email}
                                     placeholder="Почта"
                                     id="email" 
                                     type="email" 
                                     className="validate" 
-                                    onChange={(event) => {
-                                        setEmail(event.target.value)
-                                    }}
+                                    onChange={(e) => inputHandler(e)}
                                     />
                                     <label className="active" htmlFor="email">Email</label>
                                 </div>
@@ -41,14 +55,13 @@ const SignInForm: React.FC = () => {
                             <div className="row">
                                 <div className="input-field col s12">
                                     <input 
+                                     name='password'
                                      value={password}
                                      placeholder="Пароль"
                                      id="password" 
                                      type="password" 
                                      className="validate" 
-                                     onChange={(event) => {
-                                         setPassword(event.target.value)
-                                     }}
+                                     onChange={(e) => inputHandler(e)}
                                     />
                                     <label className="active" htmlFor="password">Password</label>
                                 </div>
@@ -61,7 +74,7 @@ const SignInForm: React.FC = () => {
                             className="btn waves-effect waves-light" 
                             type="submit" 
                             name="action"
-                            onClick={()=>{handleClick()}}
+                            onClick={handleClick}
                             >
                                 Войти
                                 <i className="material-icons right">send</i>
