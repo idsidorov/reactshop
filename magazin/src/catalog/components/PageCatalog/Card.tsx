@@ -1,14 +1,19 @@
 import React from "react";
 import styles from './styles.module.scss'
 import Page from '../../constance/PageConstance'
+import { Modal } from "../Modal/Modal";
 
 const Card: React.FC = () => {
 
+    const [isModalOpen, setModalState] = React.useState(false);
 
+    const toogleModal = () => setModalState(!isModalOpen)
+    
 
     return (
-    
-            <div className={styles.Card}>
+        
+        <>
+            <div className={styles.сard}>
                 {Page.map((item: any) => (
                     <div className={styles.oneCard} key={item.id}>
                         
@@ -16,11 +21,19 @@ const Card: React.FC = () => {
                                 <div className="card">
                                     <div className="card-image">
                                         <img src={`${item.img}`} />
-                                        <a className="btn-floating halfway-fab waves-effect waves-light red">
-                                            <i className="material-icons"
-
-                                            >add</i>
-                                        </a>
+                                    </div>
+                                    <div className="card-content">
+                                            <button className="material-icons" onClick={toogleModal}
+                                            >add</button>
+                                            <Modal
+                                                img={item.img}
+                                                title={item.title}
+                                                price={item.price}
+                                                description={item.description}
+                                                isOpen={isModalOpen}
+                                                onClose={toogleModal}
+                                                >
+                                            </Modal>
                                     </div>
                                     <div className="card-content">
                                         <h5>{item.title}</h5>
@@ -39,7 +52,7 @@ const Card: React.FC = () => {
                 )
                 )}
             </div>
- 
+        </>
 
 
 
