@@ -12,8 +12,7 @@ const Card: React.FC = () => {
 
     return (
         
-        <>
-            <div className={styles.сard}>
+            <div className={styles.Card}>
                 {Page.map((item: any) => (
                     <div className={styles.oneCard} key={item.id}>
                         
@@ -26,6 +25,7 @@ const Card: React.FC = () => {
                                             <button className="material-icons" onClick={toogleModal}
                                             >add</button>
                                             <Modal
+                                                id={item.id}
                                                 img={item.img}
                                                 title={item.title}
                                                 price={item.price}
@@ -52,8 +52,7 @@ const Card: React.FC = () => {
                 )
                 )}
             </div>
-        </>
-
+    
 
 
     )
